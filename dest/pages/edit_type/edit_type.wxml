@@ -1,0 +1,16 @@
+<!--pages/edit_type/edit_type.wxml-->
+<view class="pageMain">
+  <!--view>
+    <view>新增类别</view>
+  <input type="text" placeholder='输入类别' bindinput='change'></input>
+  <view bindtap='add'>新增</view>
+
+  <view>新增菜式</view>
+  <input type="text" placeholder='输入菜式' bindinput='change_menu' data-set="name"></input>
+  <input type="text" placeholder='输入描述' bindinput='change_menu' data-set="des"></input>
+  <input type="text" placeholder='输入价格' bindinput='change_menu' data-set="price"></input>
+  <input type="text" placeholder='输入标签' bindinput='change_menu' data-set="tase"></input>
+  <view bindtap='add_menu'>新增</view>
+  </view-->
+  <view class=""></view>
+</view>

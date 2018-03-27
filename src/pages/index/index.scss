@@ -1,0 +1,97 @@
+/**index.wxss**/
+page{
+  background:#FFFECE;
+ 
+}
+.pageMain{
+  background:#FFFECE;
+  .type_list{
+    width: 50%;
+    &:nth-child(2n+1){
+      .type_name{
+        border-right:1px solid #FFFECE;
+      }
+    }
+    .type_name{
+      padding: 8rpx 20rpx;
+      color:#fff;
+      font-weight:600;
+      font-size: 36rpx;
+      background: rgb(200,11,11);
+    }
+    .food_list{
+      .food_item{
+        padding: 5rpx 0rpx 0rpx 20rpx;
+        font-size: 30rpx;
+        &:hover{
+          background: rgb(226, 224, 156)
+        }
+      }
+    }
+  }
+  .empty{
+    height: 100rpx;
+    width:100%;
+  }
+  .cart{
+    position: fixed;
+    bottom: 0;
+    height: 88rpx;
+    width: 100%;
+    background: #fff;
+    .left{
+      padding: 0rpx 30rpx;
+      background: #f2f2f2;
+      font-size: 32rpx;
+    }
+    .right{
+      width:150rpx;
+      background: #C80B0B;
+      color: #fff;
+      font-size: 32rpx;
+    }
+  }
+}
+.cart_fade{
+  &.now{
+      transform : scale(1,1);
+      background-color:rgba(0,0,0,0.6);
+  }
+  transition:background-color 0.4s,transform 0.2s;
+  transform : scale(0,0);
+  background-color:rgba(0,0,0,0); 
+  position:fixed;
+  top:0px;
+  z-index:10000;
+  background:rgba(0,0,0,0.6);
+  .empty-pack{
+    width:100%;
+  }
+  .pannel{
+      width:100%;
+      min-height: 88rpx;
+      background:#fff;
+      .pannel_item{
+        padding-left: 30rpx;
+        font-size:30rpx;
+      }
+  }
+  .cart{
+    position: fixed;
+    bottom: 0;
+    height: 88rpx;
+    width: 100%;
+    background: #fff;
+    .left{
+      padding: 0rpx 30rpx;
+      background: #f2f2f2;
+      font-size: 32rpx;
+    }
+    .right{
+      width:150rpx;
+      background: #C80B0B;
+      color: #fff;
+      font-size: 32rpx;
+    }
+  }
+}

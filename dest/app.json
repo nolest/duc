@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/edit_type/edit_type",
+    "pages/arrange/arrange",
+    "pages/mine/mine",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FFFECE",
+    "navigationBarTitleText": "都城点餐助手",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#333333",
+    "borderStyle": "white",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "/image/common/bar_1_81x81.png",
+        "selectedIconPath": "/image/common/bar_1_cur_81x81.png",
+        "text": "菜单"
+      },
+      {
+        "pagePath": "pages/arrange/arrange",
+        "iconPath": "/image/common/bar_2_81x81.png",
+        "selectedIconPath": "/image/common/bar_2_cur_81x81.png",
+        "text": "车队"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "iconPath": "/image/common/bar_3_81x81.png",
+        "selectedIconPath": "/image/common/bar_3_cur_81x81.png",
+        "text": "我的"
+      }
+    ]
+  }
+}
