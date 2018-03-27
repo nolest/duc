@@ -1,4 +1,5 @@
 // pages/arrange/arrange.js
+const app = getApp()
 Page({
 
   /**
@@ -7,12 +8,44 @@ Page({
   data: {
   
   },
+  fetch() {
+    let that = this;
+    wx.showLoading({
+      title: '发送中',
+    })
+    app.util.xh_request({
+      url: app.globalData.domain + app.globalData.version + '/car/wechat/my',
+      method: 'GET',
+      success: function (res) {
+        console.log(res);
+        that.setData({
+          fetch: res.data
+        })
+      },
+      fail: function (res) {
+        console.log(res);
 
+      },
+      complete: function (res) {
+        wx.hideLoading();
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    let that = this;
+    app.get_window_info(this);
+    app.ready(
+      function (res) {
+        //本地缓存sessionId
+        that.fetch();
+        console.log(res);
+      },
+      function (res) {
+        //报错
+      })
   },
 
   /**
