@@ -14,16 +14,24 @@ page {
         padding: 0rpx 20rpx;
         min-width: 80rpx;
         border-left: 1px solid #FFFECE; }
-    .pageMain .menu_list .contain .body .left .info {
-      min-height: 40rpx;
-      border-bottom: 1rpx solid #fff; }
-      .pageMain .menu_list .contain .body .left .info .who {
-        padding: 10rpx 15rpx; }
-      .pageMain .menu_list .contain .body .left .info .remarks {
-        padding: 10rpx 15rpx; }
+    .pageMain .menu_list .contain .body .left .outer {
+      border-bottom: 1rpx solid #C80B0B; }
+      .pageMain .menu_list .contain .body .left .outer:last-child {
+        border-bottom: none; }
+      .pageMain .menu_list .contain .body .left .outer .info {
+        min-height: 40rpx;
+        font-size: 30rpx;
+        color: #333; }
+        .pageMain .menu_list .contain .body .left .outer .info .who {
+          min-width: 60rpx;
+          padding: 10rpx 15rpx; }
+        .pageMain .menu_list .contain .body .left .outer .info .remarks {
+          padding: 10rpx 15rpx; }
     .pageMain .menu_list .contain .body .side {
       padding: 0rpx 20rpx;
-      min-width: 80rpx; }
+      min-width: 80rpx;
+      font-size: 40rpx;
+      color: #333; }
   .pageMain .menu_list .total {
     padding: 30rpx 20rpx; }
     .pageMain .menu_list .total .finish_total {
@@ -31,9 +39,16 @@ page {
       color: #C80B0B;
       font-size: 36rpx; }
   .pageMain .btns {
-    margin-top: 40px; }
+    margin-top: 40px;
+    margin-bottom: 40px; }
     .pageMain .btns .clear {
       width: 80%;
       color: #fff;
       background: #C80B0B;
       padding: 8rpx; }
+  .pageMain .menu_empty .text {
+    font-size: 36rpx;
+    background: #C80B0B;
+    color: #fff;
+    font-weight: 600;
+    padding: 20rpx 30rpx; }

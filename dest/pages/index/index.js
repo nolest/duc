@@ -5,17 +5,18 @@ const app = getApp()
 Page({
   data: {
     cart_id: 8827,
-    temp: [],
+    menu: [],
     show_cart_fade: 0,
-    total: {
-      total_num: 0,
-      total_price: 0
-    }
+    finish_total: 0,
+    finish_num: 0
   },
   //事件处理函数
   onLoad: function () {
     let that = this;
     app.get_window_info(this, { pic_cal: [750, 422] });
+  },
+  onShow: function () {
+    let that = this;
     app.ready(
       function (res) {
         //本地缓存sessionId
@@ -26,10 +27,54 @@ Page({
         //报错
       })
   },
+  sync_menu: function () {
+    let that = this;
+    app.menu.menu({
+      control: '',
+      obj: {},
+      success: function (res) {
+        console.log(res);
+        console.log(res.data);
+        console.log(typeof res.data)
+        if (res.data) {
+          console.log('in');
+          that.setData({
+            menu: res.data
+          })
+          that.sync_total();
+        }
+      },
+      fail: function (res) {
+
+      },
+      complete: function (res) {
+
+      }
+    });
+  },
+  sync_total: function () {
+    let that = this;
+    app.menu.menu({
+      control: 'strick',
+      obj: {},
+      success: function (res, finish_total, finish_num) {
+        that.setData({
+          finish_total: finish_total,
+          finish_num: finish_num
+        })
+      },
+      fail: function (res) {
+
+      },
+      complete: function (res) {
+
+      }
+    });
+  },
   fetch() {
     let that = this;
     wx.showLoading({
-      title: '发送中',
+      title: '加载中',
     })
     app.util.xh_request({
       url: app.globalData.domain + app.globalData.version + '/type/wechat/all',
@@ -39,6 +84,7 @@ Page({
         that.setData({
           fetch: res.data
         })
+        that.sync_menu();
       },
       fail: function (res) {
         console.log(res);
@@ -49,25 +95,45 @@ Page({
       }
     })
   },
+  // add_cart: function (e) {
+  //   let that = this;
+  //   let fid = e.currentTarget.dataset.fid;
+  //   let cid = e.currentTarget.dataset.cid;
+  //   let temp = that.data.temp;
+  //   if (!that.data.fetch[fid].foods[cid].num) {
+  //     that.data.fetch[fid].foods[cid].num = 1;
+  //   }
+  //   else {
+  //     that.data.fetch[fid].foods[cid].num++;
+  //   }
+
+  //   temp.push(that.data.fetch[fid].foods[cid]);
+
+  //   that.setData({
+  //     temp: temp
+  //   });
+
+  //   that.fresh_total();
+  // },
   add_cart: function (e) {
     let that = this;
     let fid = e.currentTarget.dataset.fid;
     let cid = e.currentTarget.dataset.cid;
-    let temp = that.data.temp;
-    if (!that.data.fetch[fid].foods[cid].num) {
-      that.data.fetch[fid].foods[cid].num = 1;
-    }
-    else {
-      that.data.fetch[fid].foods[cid].num++;
-    }
 
-    temp.push(that.data.fetch[fid].foods[cid]);
-    
-    that.setData({
-      temp: temp
+    app.menu.menu({
+      control: 'add',
+      obj: that.data.fetch[fid].foods[cid],
+      success: function (res) {
+        console.log(res);
+        that.sync_menu();
+      },
+      fail: function (res) {
+
+      },
+      complete: function (res) {
+
+      }
     });
-    
-    that.fresh_total();
   },
   fresh_total: function () {
     let that = this;
@@ -85,13 +151,13 @@ Page({
       total: total
     })
   },
-  open_cart : function(){
+  open_cart: function () {
     let that = this;
     that.setData({
-      show_cart_fade : 1
+      show_cart_fade: 1
     })
   },
-  close_cart:function(){
+  close_cart: function () {
     let that = this;
     that.setData({
       show_cart_fade: 0
@@ -105,37 +171,63 @@ Page({
       hasUserInfo: true
     })
   },
-  changedes: function(e){
+  changedes: function (e) {
     let that = this;
-    let temp = that.data.temp;
+    let temp = that.data.menu;
     let index = e.currentTarget.dataset.index;
     let value = e.detail.value;
-    console.log(e);
-    temp[index].description = e.detail.value
-    that.setData({
-      temp : temp
-    })
-  },
-  del : function(e){
-    let that = this;
-    let temp = that.data.temp;
-    let index = e.currentTarget.dataset.index;
-    temp.splice(index, 1);
-    that.setData({
-      temp: temp
-    });
-    that.fresh_total();
-  },
-  choose_fin : function(e){
-    let that = this;
-    wx.setStorage({
-      key:'menu',
-      data: that.data.temp,
+    temp[index].remarks = e.detail.value;
+    app.menu.menu({
+      control: 'modify',
+      index: index,
+      obj: temp[index],
       success: function (res) {
-        wx.switchTab({
-          url:'/pages/records/records'
+        console.log(res)
+        that.setData({
+          menu: res
         })
+        that.sync_total();
+      },
+      fail: function (res) {
+
+      },
+      complete: function (res) {
+
       }
+    });
+    // let value = e.detail.value;
+    // console.log(e);
+    // temp[index].description = e.detail.value
+    // that.setData({
+    //   temp : temp
+    // })
+  },
+  del: function (e) {
+    let that = this;
+    let index = e.currentTarget.dataset.index;
+    console.log(e);
+    app.menu.menu({
+      control: 'del',
+      index: index,
+      success: function (res) {
+        console.log(res)
+        that.setData({
+          menu: res
+        })
+        that.sync_total();
+      },
+      fail: function (res) {
+
+      },
+      complete: function (res) {
+
+      }
+    });
+  },
+  choose_fin: function (e) {
+    let that = this;
+    wx.switchTab({
+      url: '/pages/records/records'
     })
   }
 })

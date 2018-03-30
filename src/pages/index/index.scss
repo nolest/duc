@@ -20,9 +20,13 @@ page{
       background: rgb(200,11,11);
     }
     .food_list{
+      color: #333;
       .food_item{
-        padding: 5rpx 0rpx 0rpx 20rpx;
+        padding: 5rpx 10rpx 0rpx 20rpx;
         font-size: 30rpx;
+        min-height:40rpx;
+        padding-top: 10rpx;
+        padding-bottom: 10rpx;
         &:hover{
           background: rgb(226, 224, 156)
         }

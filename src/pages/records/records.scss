@@ -20,21 +20,30 @@ page{
             }
             .body{
                 .left{
-                    .info{
-                        min-height:40rpx;
-                        
-                        border-bottom: 1rpx solid #fff;
-                        .who{
-                            padding: 10rpx 15rpx;
-                        }
-                        .remarks{
-                            padding: 10rpx 15rpx;
+                    .outer{
+                        border-bottom: 1rpx solid #C80B0B;
+                        &:last-child{
+                            border-bottom : none;
+                        } 
+                        .info{
+                            min-height:40rpx;
+                            font-size:30rpx;
+                            color: #333;
+                            .who{
+                                min-width:60rpx;
+                                padding: 10rpx 15rpx;
+                            }
+                            .remarks{
+                                padding: 10rpx 15rpx;
+                            }
                         }
                     }
                 }
                 .side{
                     padding: 0rpx 20rpx;
                     min-width:80rpx;
+                    font-size: 40rpx;
+                    color: #333;
                 }
             }
         }
@@ -49,11 +58,21 @@ page{
     }
     .btns{
         margin-top: 40px;
+        margin-bottom: 40px;
         .clear{
             width: 80%;
             color: #fff;
             background: #C80B0B;
             padding: 8rpx;
+        }
+    }
+    .menu_empty{
+        .text{
+            font-size:36rpx;
+            background: #C80B0B;
+            color: #fff;
+            font-weight: 600;
+            padding: 20rpx 30rpx;
         }
     }
 }

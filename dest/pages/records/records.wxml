@@ -1,6 +1,6 @@
 <!--pages/records/records.wxml-->
 <view class="pageMain">
-  <view class="ds-flex flex-v align-center  menu_list">
+  <view class="ds-flex flex-v align-center menu_list" wx:if="{{ finish_num }}">
     <view class="ds-flex flex-v contain" wx:for="{{ menu }}">
       <view class="ds-flex pack-between title">
         <view class="ds-flex pack-center align-center">{{ item.f_obj.name }}</view>
@@ -8,10 +8,10 @@
       </view>
       <view class="ds-flex body">
         <view class="ds-flex flex-v flex-1 left">
-          <view class="ds-flex flex-1" wx:for="{{ item.list }}" wx:for-index="idx" wx:for-item="inner">
-            <view class="ds-flex info flex-1">
-              <view class="ds-flex who pack-center align-center flex-1">{{ inner.who || 1 }}</view>
-              <view class="ds-flex remarks pack-center align-center flex-1">{{ inner.remarks || 2 }}</view>
+          <view class="ds-flex outer" wx:for="{{ item.list }}" wx:for-index="idx" wx:for-item="inner">
+            <view class="ds-flex info">
+              <view class="ds-flex who pack-center align-center">备注</view>
+              <view class="ds-flex remarks pack-center align-center">{{ inner.remarks || ' ' }}</view>
             </view>
           </view>
         </view>
@@ -23,7 +23,10 @@
       <view class="ds-flex finish_total">{{ finish_total }}</view>
     </view>
   </view>
-  <view class="ds-flex pack-center align-center btns" bindtap='clear'>
+  <view class="ds-flex pack-center align-center btns" bindtap='clear' wx:if="{{ finish_num }}">
     <view class="ds-flex pack-center clear">清 除</view>
+  </view>
+  <view class="ds-flex menu_empty pack-center align-center" wx:if="{{ !finish_num }}" style="height:{{ window.windowHeight *0.8 }}px">
+    <view class="ds-flex text pack-center align-center" bindtap='nav_index'>请到菜单添加菜品吧</view>
   </view>
 </view>

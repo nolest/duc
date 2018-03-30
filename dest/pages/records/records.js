@@ -65,11 +65,12 @@ Page({
     app.menu.menu({
       control: 'strick',
       obj: {},
-      success: function (res, finish_total) {
-        console.log(res, finish_total);
+      success: function (res, finish_total, finish_num) {
+        console.log(res, finish_total, finish_num);
         that.setData({
           menu : res,
-          finish_total: finish_total
+          finish_total: finish_total,
+          finish_num: finish_num
         })
       },
       fail: function (res) {
@@ -116,11 +117,23 @@ Page({
   },
   clear: function (e) {
     let that = this;
-    wx.removeStorage({
-      key: 'menu',
-      success: function (res) {
-        console.log(res.data)
+    app.menu.menu({
+      control: 'clear',
+      success: function (res, finish_total, finish_num) {
+        that.sync_menu();
+      },
+      fail: function (res) {
+
+      },
+      complete: function (res) {
+
       }
+    });
+  },
+  nav_index : function(e){
+    let that = this;
+    wx.switchTab({
+      url: '/pages/index/index'
     })
   }
 })

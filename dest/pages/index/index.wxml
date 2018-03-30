@@ -3,7 +3,7 @@
   <view class="ds-flex flex-v type_list" wx:for="{{ fetch }}" data-tid="{{ item.id }}">
     <view class="type_name">{{ item.name }}</view>
     <view class="ds-flex flex-v food_list">
-      <view class="ds-flex pack-between food_item" wx:for="{{ item.foods }}" wx:for-index="idx" wx:for-item="inneritem" data-disable="{{ inneritem.disable }}" bindtap="add_cart" data-fid="{{ index }}" data-cid="{{ idx }}">
+      <view class="ds-flex pack-between food_item align-center" wx:for="{{ item.foods }}" wx:for-index="idx" wx:for-item="inneritem" data-disable="{{ inneritem.disable }}" bindtap="add_cart" data-fid="{{ index }}" data-cid="{{ idx }}">
         <view class="ds-flex">{{ inneritem.name }}</view>
         <view class="ds-flex">{{ inneritem.price }}</view>
       </view>
@@ -14,12 +14,12 @@
     <view class="ds-flex flex-1 pack-between align-center left" bindtap='open_cart'>
       <view class="ds-flex">
         <view class=" ds-flex">共</view>
-        <view class="ds-flex total_num">{{ total.total_num }}</view>
+        <view class="ds-flex total_num">{{ finish_num }}</view>
         <view class="ds-flex">个菜品</view>
       </view>
       <view class="ds-flex">
         <view class="ds-flex">合计</view>
-        <view class="ds-flex total_num">{{ total.total_price }}</view>
+        <view class="ds-flex total_num">{{ finish_total }}</view>
         <view class="ds-flex">元</view>
       </view>
     </view>
@@ -31,7 +31,7 @@
 <view class="ds-flex flex-v pack-end align-center cart_fade {{ show_cart_fade?'now':'' }}" style="height:{{ window.windowHeight }}px;width:{{ window.windowWidth }}px">
   <view class="ds-flex flex-1 empty-pack" bindtap='close_cart'></view>
   <scroll-view scroll-y class="ds-flex flex-v pannel" style="max-height:{{ window.windowHeight/2 }}px;">
-    <view class="ds-flex pannel_item align-center" wx:for="{{ temp }}">
+    <view class="ds-flex pannel_item align-center" wx:for="{{ menu }}">
       <view class="ds-flex flex-1"> {{ item.name }}</view>
       <view class="ds-flex price">{{ item.price }}</view>
       <view class="ds-flex">
@@ -48,12 +48,12 @@
       <view class="ds-flex flex-1 pack-between align-center left" bindtap='open_cart'>
         <view class="ds-flex">
           <view class=" ds-flex">共</view>
-          <view class="ds-flex total_num">{{ total.total_num }}</view>
+          <view class="ds-flex total_num">{{ finish_num }}</view>
           <view class="ds-flex">个菜品</view>
         </view>
         <view class="ds-flex">
           <view class="ds-flex">合计</view>
-          <view class="ds-flex total_num">{{ total.total_price }}</view>
+          <view class="ds-flex total_num">{{ finish_total }}</view>
           <view class="ds-flex">元</view>
         </view>
       </view>
