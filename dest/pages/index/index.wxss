@@ -25,6 +25,7 @@ page {
   .pageMain .cart {
     position: fixed;
     bottom: 0;
+    z-index: 8;
     height: 88rpx;
     width: 100%;
     background: #fff; }
@@ -32,6 +33,9 @@ page {
       padding: 0rpx 30rpx;
       background: #f2f2f2;
       font-size: 32rpx; }
+      .pageMain .cart .left .total_num {
+        color: #C80B0B;
+        padding: 0rpx 10rpx; }
     .pageMain .cart .right {
       width: 150rpx;
       background: #C80B0B;
@@ -56,11 +60,21 @@ page {
     min-height: 88rpx;
     background: #fff; }
     .cart_fade .pannel .pannel_item {
-      padding-left: 30rpx;
+      height: 60rpx;
+      padding: 10rpx 30rpx 10rpx 30rpx;
       font-size: 30rpx; }
+      .cart_fade .pannel .pannel_item .price {
+        padding-right: 20rpx;
+        color: #C80B0B; }
+      .cart_fade .pannel .pannel_item .inp {
+        width: 50px; }
+    .cart_fade .pannel .empty {
+      height: 88rpx;
+      width: 100%; }
   .cart_fade .cart {
     position: fixed;
     bottom: 0;
+    z-index: 9;
     height: 88rpx;
     width: 100%;
     background: #fff; }
@@ -68,6 +82,9 @@ page {
       padding: 0rpx 30rpx;
       background: #f2f2f2;
       font-size: 32rpx; }
+      .cart_fade .cart .left .total_num {
+        color: #C80B0B;
+        padding: 0rpx 10rpx; }
     .cart_fade .cart .right {
       width: 150rpx;
       background: #C80B0B;

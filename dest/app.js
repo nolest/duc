@@ -1,9 +1,11 @@
 //app.js
 var util = require('/utils/util.js');
-var db = '';//-test';
+var menu = require('/utils/menu.js');
+var db = '-test';//-test';
 App({
   db: db,
   util: util,
+  menu: menu,
   get_window_info: function (page, ext) {
     var that = this;
     //获取当前页面的窗口信息，在每个page 调用
@@ -144,7 +146,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    domain: 'http://192.168.1.149:8890/',//'https://readygo' + db + '.starsriver.cn/',//'https://readygo-test.starsriver.cn/'
+    domain: 'https://duc' + db + '.starsriver.cn/',//'https://readygo-test.starsriver.cn/'
     version: 'v1.0',
     navigateback_record: {
       id: ''

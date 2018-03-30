@@ -23,20 +23,22 @@
         <view class="ds-flex">元</view>
       </view>
     </view>
-    <view class="ds-flex right pack-center align-center">
-      选好了
+    <view class="ds-flex right pack-center align-center" catchtap='choose_fin'>
+      记下来
     </view>
   </view>
 </view>
 <view class="ds-flex flex-v pack-end align-center cart_fade {{ show_cart_fade?'now':'' }}" style="height:{{ window.windowHeight }}px;width:{{ window.windowWidth }}px">
   <view class="ds-flex flex-1 empty-pack" bindtap='close_cart'></view>
-  <scroll-view scroll-y class="ds-flex flex-v pannel" style="max-height:250px;">
+  <scroll-view scroll-y class="ds-flex flex-v pannel" style="max-height:{{ window.windowHeight/2 }}px;">
     <view class="ds-flex pannel_item align-center" wx:for="{{ temp }}">
-      <view class="ds-flex flex-1 "> {{ item.name }}</view>
+      <view class="ds-flex flex-1"> {{ item.name }}</view>
+      <view class="ds-flex price">{{ item.price }}</view>
       <view class="ds-flex">
-        <input placeholder="写备注" />
+        <input class="inp" placeholder="写备注" confirm-type="done" type="text" data-index="{{index}}" bindinput="changedes"/>
       </view>
-      <view class="ds-flex btns">
+      <view class="del" bindtap='del' data-index="{{index}}">移除</view>
+      <view class="ds-flex btns fn-hide">
         <view>-</view>
         <view>{{ item.num }}</view>
         <view>+</view>
@@ -55,9 +57,10 @@
           <view class="ds-flex">元</view>
         </view>
       </view>
-      <view class="ds-flex right pack-center align-center">
-        选好了
+      <view class="ds-flex right pack-center align-center" catchtap='choose_fin'>
+        记下来
       </view>
     </view>
+    <view class="empty"></view>
   </scroll-view>
 </view>

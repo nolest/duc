@@ -78,6 +78,8 @@ function settapbar(style) {
       }); break;
   }
 }
+
+
 module.exports = {
   xh_request: xh_request,
   settapbar: settapbar,

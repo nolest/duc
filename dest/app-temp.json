@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/records/records",
     "pages/edit_type/edit_type",
     "pages/arrange/arrange",
     "pages/mine/mine",
@@ -27,10 +26,10 @@
         "text": "菜单"
       },
       {
-        "pagePath": "pages/records/records",
+        "pagePath": "pages/arrange/arrange",
         "iconPath": "/image/common/bar_2_81x81.png",
         "selectedIconPath": "/image/common/bar_2_cur_81x81.png",
-        "text": "记录"
+        "text": "车队"
       },
       {
         "pagePath": "pages/mine/mine",

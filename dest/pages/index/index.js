@@ -60,10 +60,13 @@ Page({
     else {
       that.data.fetch[fid].foods[cid].num++;
     }
+
     temp.push(that.data.fetch[fid].foods[cid]);
+    
     that.setData({
       temp: temp
     });
+    
     that.fresh_total();
   },
   fresh_total: function () {
@@ -100,6 +103,39 @@ Page({
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
+    })
+  },
+  changedes: function(e){
+    let that = this;
+    let temp = that.data.temp;
+    let index = e.currentTarget.dataset.index;
+    let value = e.detail.value;
+    console.log(e);
+    temp[index].description = e.detail.value
+    that.setData({
+      temp : temp
+    })
+  },
+  del : function(e){
+    let that = this;
+    let temp = that.data.temp;
+    let index = e.currentTarget.dataset.index;
+    temp.splice(index, 1);
+    that.setData({
+      temp: temp
+    });
+    that.fresh_total();
+  },
+  choose_fin : function(e){
+    let that = this;
+    wx.setStorage({
+      key:'menu',
+      data: that.data.temp,
+      success: function (res) {
+        wx.switchTab({
+          url:'/pages/records/records'
+        })
+      }
     })
   }
 })

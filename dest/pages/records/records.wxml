@@ -1,0 +1,21 @@
+<!--pages/records/records.wxml-->
+<view class="pageMain">
+  <view class="ds-flex flex-v menu_list">
+    <view class="ds-flex flex-v" wx:for="{{ menu }}">
+      <view class="ds-flex pack-center align-center title">{{ item.f_obj.name }}</view>
+      <view class="ds-flex body">
+        <view class="ds-flex flex-1 left">
+          <view class="ds-flex flex-v" wx:for="{{ item.list }}" wx:for-index="idx" wx:for-item="inner">
+            <view class="ds-flex info">
+              <view class="ds-flex">{{ inner.who }}</view>
+              <view class="ds-flex">{{ inner.remarks }}</view>
+            </view>
+          </view>
+        </view>
+        <view class="ds-flex side">{{ item.num }}</view>
+      </view>
+      <view class="ds-flex total">{{ item.total }}</view>
+    </view>
+  </view>
+  <view bindtap='clear'>清除</view>
+</view>
