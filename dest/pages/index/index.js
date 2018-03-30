@@ -27,6 +27,11 @@ Page({
         //报错
       })
   },
+  onPullDownRefresh:function(){
+    let that = this;
+    wx.stopPullDownRefresh();
+    that.fetch();
+  },
   sync_menu: function () {
     let that = this;
     app.menu.menu({

@@ -10,6 +10,13 @@
         <view class="ds-flex flex-v flex-1 left">
           <view class="ds-flex outer" wx:for="{{ item.list }}" wx:for-index="idx" wx:for-item="inner">
             <view class="ds-flex info">
+              <view class="ds-flex check">
+                <view class="ds-flex align-center" bindtap='tap_check' data-fid="{{ index }}" data-cid="{{ idx }}">
+                  <view class="box cur" wx:if="{{ inner.check }}"></view>
+                  <view class="box" wx:else></view>
+                  <view class="ds-flex align-center">已付</view>
+                </view>
+              </view>
               <view class="ds-flex who pack-center align-center">备注</view>
               <view class="ds-flex remarks pack-center align-center">{{ inner.remarks || ' ' }}</view>
             </view>

@@ -25,27 +25,6 @@ Page({
         //报错
       })
   },
-  fetch() {
-    let that = this;
-    wx.getStorage({
-      key: 'menu',
-      success: function (res) {
-        that.setData({
-          temp: res.data
-        })
-        that.strick();
-      }
-    })
-  },
-  strick() {
-    let that = this;
-    let d = that.data.temp;
-    let arr = [];
-    let isin = false;
-    for (var i in d) {
-      console.log(d[i])
-    }
-  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -60,7 +39,7 @@ Page({
     let that = this;
     that.sync_menu();
   },
-  sync_menu :function(){
+  sync_menu: function () {
     let that = this;
     app.menu.menu({
       control: 'strick',
@@ -68,7 +47,7 @@ Page({
       success: function (res, finish_total, finish_num) {
         console.log(res, finish_total, finish_num);
         that.setData({
-          menu : res,
+          menu: res,
           finish_total: finish_total,
           finish_num: finish_num
         })
@@ -117,10 +96,92 @@ Page({
   },
   clear: function (e) {
     let that = this;
+    wx.showModal({
+      title: '提示',
+      content: '确定要清除吗',
+      showCancel: true,
+      confirmColor: '#C80B0B',
+      success: function (res) {
+        if (res.confirm) {
+          app.menu.menu({
+            control: 'clear',
+            success: function (res, finish_total, finish_num) {
+              that.sync_menu();
+            },
+            fail: function (res) {
+
+            },
+            complete: function (res) {
+
+            }
+          });
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+  },
+  nav_index: function (e) {
+    let that = this;
+    wx.switchTab({
+      url: '/pages/index/index'
+    })
+  },
+  tap_check: function (e) {
+    return
+    let that = this;
+    let temp = that.data.menu;
+    let fid = e.currentTarget.dataset.fid;
+    let cid = e.currentTarget.dataset.cid;
+    let before = 0;
+    for(let i = 0 ;i < fid;i++){
+      before = before + temp[i].num
+    }
+    before = before + cid;
     app.menu.menu({
-      control: 'clear',
-      success: function (res, finish_total, finish_num) {
-        that.sync_menu();
+      control: '',
+      success: function (res) {
+
+        let obj = res.data[before];
+        console.log(res);
+        obj.check = obj.check?false:true;
+
+        app.menu.menu({
+          control: 'modify',
+          index: before,
+          obj: obj,
+          success: function (resr) {
+            
+
+            app.menu.menu({
+              control: 'strick',
+              obj: {},
+              success: function (resp, finish_total, finish_num) {
+                console.log(resp, finish_total, finish_num);
+                that.setData({
+                  menu: resp,
+                  finish_total: finish_total,
+                  finish_num: finish_num
+                })
+              },
+              fail: function (resp) {
+
+              },
+              complete: function (resp) {
+
+              }
+            });
+
+
+          },
+          fail: function (resr) {
+
+          },
+          complete: function (resr) {
+
+          }
+        });
+
       },
       fail: function (res) {
 
@@ -129,11 +190,6 @@ Page({
 
       }
     });
-  },
-  nav_index : function(e){
-    let that = this;
-    wx.switchTab({
-      url: '/pages/index/index'
-    })
+
   }
 })

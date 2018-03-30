@@ -37,6 +37,7 @@ App({
   },
   ready: function (cb, cb2) {
     var that = this;
+
     that.get_app_session(cb, cb2);
   },
   update_user: function () {

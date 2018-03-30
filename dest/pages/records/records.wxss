@@ -22,6 +22,13 @@ page {
         min-height: 40rpx;
         font-size: 30rpx;
         color: #333; }
+        .pageMain .menu_list .contain .body .left .outer .info .check .box {
+          width: 20rpx;
+          height: 20rpx;
+          background: #FFFECE;
+          border: 1rpx solid #C80B0B; }
+          .pageMain .menu_list .contain .body .left .outer .info .check .box.cur {
+            background: #C80B0B; }
         .pageMain .menu_list .contain .body .left .outer .info .who {
           min-width: 60rpx;
           padding: 10rpx 15rpx; }

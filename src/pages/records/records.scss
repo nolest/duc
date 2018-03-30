@@ -29,6 +29,17 @@ page{
                             min-height:40rpx;
                             font-size:30rpx;
                             color: #333;
+                            .check{
+                                .box{
+                                    width:20rpx;
+                                    height:20rpx;
+                                    background: #FFFECE;
+                                    border:1rpx solid #C80B0B;
+                                    &.cur{
+                                        background: #C80B0B;
+                                    }
+                                }
+                            }
                             .who{
                                 min-width:60rpx;
                                 padding: 10rpx 15rpx;

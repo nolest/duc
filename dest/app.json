@@ -31,12 +31,6 @@
         "iconPath": "/image/common/bar_2_81x81.png",
         "selectedIconPath": "/image/common/bar_2_cur_81x81.png",
         "text": "记录"
-      },
-      {
-        "pagePath": "pages/mine/mine",
-        "iconPath": "/image/common/bar_3_81x81.png",
-        "selectedIconPath": "/image/common/bar_3_cur_81x81.png",
-        "text": "我的"
       }
     ]
   }
