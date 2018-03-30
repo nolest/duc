@@ -1,0 +1,59 @@
+page{
+    background:#FFFECE;
+   
+  }
+  .pageMain{
+    background:#FFFECE;
+    .menu_list{
+        .contain{
+            width:80%;
+            .title{
+                background: #C80B0B;
+                font-size: 36rpx;
+                color: #fff;
+                padding:8rpx 0rpx 8rpx 20rpx;
+                .right{
+                    padding: 0rpx 20rpx;
+                    min-width:80rpx;
+                    border-left:1px solid #FFFECE;
+                }
+            }
+            .body{
+                .left{
+                    .info{
+                        min-height:40rpx;
+                        
+                        border-bottom: 1rpx solid #fff;
+                        .who{
+                            padding: 10rpx 15rpx;
+                        }
+                        .remarks{
+                            padding: 10rpx 15rpx;
+                        }
+                    }
+                }
+                .side{
+                    padding: 0rpx 20rpx;
+                    min-width:80rpx;
+                }
+            }
+        }
+        .total{
+            padding: 30rpx 20rpx;
+            .finish_total{
+                padding: 0rpx 30rpx;
+                color: #C80B0B;
+                font-size: 36rpx;
+            }
+        }
+    }
+    .btns{
+        margin-top: 40px;
+        .clear{
+            width: 80%;
+            color: #fff;
+            background: #C80B0B;
+            padding: 8rpx;
+        }
+    }
+}

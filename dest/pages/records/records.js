@@ -65,10 +65,11 @@ Page({
     app.menu.menu({
       control: 'strick',
       obj: {},
-      success: function (res) {
-        console.log(res);
+      success: function (res, finish_total) {
+        console.log(res, finish_total);
         that.setData({
-          menu : res
+          menu : res,
+          finish_total: finish_total
         })
       },
       fail: function (res) {

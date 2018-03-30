@@ -109,15 +109,18 @@ function menu(options) {
 
           let total = 0;
           let num = 0;
+          let finish_total = 0;
           for(let x in arr){
             arr[x].num = arr[x].list.length
             for(let z in arr[x].list){
               total = total + arr[x].list[z].price
             }
             arr[x].total = total;
+            finish_total = finish_total + total;
             total = 0;
           }
-          typeof s_cb == 'function' && s_cb(arr);
+          finish_total = finish_total;
+          typeof s_cb == 'function' && s_cb(arr, finish_total);
         break;
         default : 
           typeof s_cb == 'function' && s_cb(res);
