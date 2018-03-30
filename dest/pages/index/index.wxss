@@ -72,7 +72,7 @@ page {
         padding-right: 20rpx;
         color: #C80B0B; }
       .cart_fade .pannel .pannel_item .inp {
-        width: 50px; }
+        width: 100px; }
     .cart_fade .pannel .empty {
       height: 88rpx;
       width: 100%; }
