@@ -48,11 +48,23 @@ page {
   .pageMain .btns {
     margin-top: 40px;
     margin-bottom: 40px; }
-    .pageMain .btns .clear {
-      width: 80%;
-      color: #fff;
-      background: #C80B0B;
-      padding: 8rpx; }
+    .pageMain .btns .btn {
+      width: 40%;
+      margin-right: 40rpx; }
+      .pageMain .btns .btn:last-child {
+        margin-right: 0; }
+      .pageMain .btns .btn.lock {
+        color: #fff;
+        background: #C80B0B;
+        padding: 8rpx; }
+      .pageMain .btns .btn.unlock {
+        color: #fff;
+        background: #10ad1d;
+        padding: 8rpx; }
+      .pageMain .btns .btn.clear {
+        color: #fff;
+        background: #C80B0B;
+        padding: 8rpx; }
   .pageMain .menu_empty .text {
     font-size: 36rpx;
     background: #C80B0B;

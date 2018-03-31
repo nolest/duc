@@ -200,12 +200,6 @@ Page({
 
       }
     });
-    // let value = e.detail.value;
-    // console.log(e);
-    // temp[index].description = e.detail.value
-    // that.setData({
-    //   temp : temp
-    // })
   },
   del: function (e) {
     let that = this;

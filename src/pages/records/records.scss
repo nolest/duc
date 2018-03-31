@@ -70,12 +70,29 @@ page{
     .btns{
         margin-top: 40px;
         margin-bottom: 40px;
-        .clear{
-            width: 80%;
-            color: #fff;
-            background: #C80B0B;
-            padding: 8rpx;
+        .btn{
+            width:40%;
+            margin-right:40rpx;
+            &:last-child{
+                margin-right:0;
+            }
+            &.lock{
+                color: #fff;
+                background: #C80B0B;
+                padding: 8rpx;
+            }            
+            &.unlock{
+                color: #fff;
+                background: rgb(16, 173, 29);
+                padding: 8rpx;
+            }            
+            &.clear{
+                color: #fff;
+                background: #C80B0B;
+                padding: 8rpx;
+            }
         }
+
     }
     .menu_empty{
         .text{

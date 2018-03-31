@@ -1,6 +1,7 @@
 //app.js
 var util = require('/utils/util.js');
 var menu = require('/utils/menu.js');
+var status = require('/utils/status.js');
 var db = '-test';//-test';
 App({
   db: db,

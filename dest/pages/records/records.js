@@ -6,7 +6,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-
   },
 
   /**
@@ -121,6 +120,12 @@ Page({
       }
     })
   },
+  lock : function(e){
+    let that = this;
+  },
+  clear : function(e){
+    let that = this;
+  },
   nav_index: function (e) {
     let that = this;
     wx.switchTab({
@@ -128,36 +133,41 @@ Page({
     })
   },
   tap_check: function (e) {
-    return
     let that = this;
     let temp = that.data.menu;
     let fid = e.currentTarget.dataset.fid;
     let cid = e.currentTarget.dataset.cid;
-    let before = 0;
-    for(let i = 0 ;i < fid;i++){
-      before = before + temp[i].num
-    }
-    before = before + cid;
+    let local = e.currentTarget.dataset.local;
+    console.log(fid,cid);
+    console.log(local);
+
     app.menu.menu({
       control: '',
       success: function (res) {
-
-        let obj = res.data[before];
         console.log(res);
+        let obj,x;
+        for(let k in res.data){
+          if (res.data[k].local_id == local){
+            obj = res.data[k];
+            x = k;
+            break;
+          }
+        }
+       
         obj.check = obj.check?false:true;
 
         app.menu.menu({
           control: 'modify',
-          index: before,
+          index: x,
           obj: obj,
           success: function (resr) {
             
-
             app.menu.menu({
               control: 'strick',
               obj: {},
               success: function (resp, finish_total, finish_num) {
                 console.log(resp, finish_total, finish_num);
+
                 that.setData({
                   menu: resp,
                   finish_total: finish_total,

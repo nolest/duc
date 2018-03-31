@@ -26,6 +26,7 @@ function menu(options) {
             throw new Error('menu add obj.id should not be null')
           }
           //设置后再获取，保证一致
+          obj.local_id = new Date().getTime();
           data.push(obj);
           wx.setStorage({
             key: 'menu',
