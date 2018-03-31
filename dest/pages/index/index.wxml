@@ -14,7 +14,7 @@
     <view class="ds-flex flex-1 pack-between align-center left" bindtap='open_cart'>
       <view class="ds-flex">
         <view class=" ds-flex">共</view>
-        <view class="ds-flex total_num">{{ finish_num }}</view>
+        <view class="ds-flex total_num" animation="{{animationData}}">{{ finish_num }}</view>
         <view class="ds-flex">个菜品</view>
       </view>
       <view class="ds-flex">
@@ -48,7 +48,7 @@
       <view class="ds-flex flex-1 pack-between align-center left" bindtap='open_cart'>
         <view class="ds-flex">
           <view class=" ds-flex">共</view>
-          <view class="ds-flex total_num">{{ finish_num }}</view>
+          <view class="ds-flex total_num" animation="{{animationData}}">{{ finish_num }}</view>
           <view class="ds-flex">个菜品</view>
         </view>
         <view class="ds-flex">

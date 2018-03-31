@@ -34,7 +34,7 @@
     </view>
   </view>
   <view class="ds-flex pack-center align-center btns" wx:if="{{ finish_num }}">
-    <view class="ds-flex pack-center btn lock" bindtap='lock' wx:if="{{ lock }}">锁 定</view>
+    <view class="ds-flex pack-center btn lock" bindtap='lock' wx:if="{{ !lock }}">锁 定</view>
     <view class="ds-flex pack-center btn unlock" bindtap='unlock' wx:else>解 锁</view>
     <view class="ds-flex pack-center btn clear" bindtap='clear'>清 除</view>
   </view>

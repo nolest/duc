@@ -39,6 +39,7 @@ page {
       background: #f2f2f2;
       font-size: 32rpx; }
       .pageMain .cart .left .total_num {
+        font-weight: 600;
         color: #C80B0B;
         padding: 0rpx 10rpx; }
     .pageMain .cart .right {
@@ -88,6 +89,7 @@ page {
       background: #f2f2f2;
       font-size: 32rpx; }
       .cart_fade .cart .left .total_num {
+        font-weight: 600;
         color: #C80B0B;
         padding: 0rpx 10rpx; }
     .cart_fade .cart .right {

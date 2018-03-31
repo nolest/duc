@@ -37,6 +37,19 @@ Page({
   onShow: function () {
     let that = this;
     that.sync_menu();
+    that.sync_status();
+  },
+  sync_status: function () {
+    let that = this;
+    app.status({
+      control: '',
+      success: function (res) {
+        console.log(res);
+        that.setData({
+          lock: res.data.lock
+        })
+      }
+    })
   },
   sync_menu: function () {
     let that = this;
@@ -114,6 +127,15 @@ Page({
 
             }
           });
+          app.status({
+            control: 'unlock',
+            success: function (res) {
+              console.log(res);
+              that.setData({
+                lock: res.lock
+              })
+            }
+          })
         } else if (res.cancel) {
           console.log('用户点击取消')
         }
@@ -122,9 +144,40 @@ Page({
   },
   lock : function(e){
     let that = this;
+    app.status({
+      control: 'lock',
+      success: function (res) {
+        console.log(res);
+        that.setData({
+          lock: res.lock
+        })
+      }
+    })
   },
-  clear : function(e){
+  unlock : function(e){
     let that = this;
+    wx.showModal({
+      title: '提示',
+      content: '确定要解锁吗',
+      showCancel: true,
+      confirmColor: '#C80B0B',
+      success: function (res) {
+        if (res.confirm) {
+          app.status({
+            control: 'unlock',
+            success: function (res) {
+              console.log(res);
+              that.setData({
+                lock: res.lock
+              })
+            }
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+
   },
   nav_index: function (e) {
     let that = this;

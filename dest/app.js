@@ -7,6 +7,7 @@ App({
   db: db,
   util: util,
   menu: menu,
+  status: status,
   get_window_info: function (page, ext) {
     var that = this;
     //获取当前页面的窗口信息，在每个page 调用

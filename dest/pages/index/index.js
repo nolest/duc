@@ -25,12 +25,25 @@ Page({
       },
       function (res) {
         //报错
-      })
+      });
+
   },
-  onPullDownRefresh:function(){
+  onPullDownRefresh: function () {
     let that = this;
     wx.stopPullDownRefresh();
     that.fetch();
+  },
+  sync_status: function () {
+    let that = this;
+    app.status({
+      control: '',
+      success: function (res) {
+        console.log(res);
+        that.setData({
+          lock: res.data.lock
+        })
+      }
+    })
   },
   sync_menu: function () {
     let that = this;
@@ -90,6 +103,7 @@ Page({
           fetch: res.data
         })
         that.sync_menu();
+        that.sync_status();
       },
       fail: function (res) {
         console.log(res);
@@ -125,20 +139,44 @@ Page({
     let fid = e.currentTarget.dataset.fid;
     let cid = e.currentTarget.dataset.cid;
 
-    app.menu.menu({
-      control: 'add',
-      obj: that.data.fetch[fid].foods[cid],
-      success: function (res) {
-        console.log(res);
-        that.sync_menu();
-      },
-      fail: function (res) {
+    if (that.data.lock) {
+      wx.showToast({
+        title: '请先解锁',
+        icon: 'none'
+      })
+    }
+    else {
+      app.menu.menu({
+        control: 'add',
+        obj: that.data.fetch[fid].foods[cid],
+        success: function (res) {
+          console.log(res);
+          //========动画
+          var animation = wx.createAnimation({
+            transformOrigin: "50% 50%",
+            duration: 600,
+            timingFunction: "ease",
+            delay: 0
+          })
 
-      },
-      complete: function (res) {
+          that.animation = animation;
 
-      }
-    });
+          animation.scale(2, 2).step().scale(1, 1).step();
+
+          that.setData({
+            animationData: animation.export()
+          })
+          //===========动画
+          that.sync_menu();
+        },
+        fail: function (res) {
+
+        },
+        complete: function (res) {
+
+        }
+      });
+    }
   },
   fresh_total: function () {
     let that = this;
